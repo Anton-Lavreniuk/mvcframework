@@ -1,15 +1,20 @@
 <?php
 
-    class Pages{
+    class Pages extends Controller {
         public function __construct(){
 
         }
 
         public function index() {
-            echo "<h1>404 Page does not exist</h1>";
+            $data=[
+                'title' => 'Welcome!'
+            ];
+            //Default to the index view
+            $this->view('pages/index',$data);
         }
 
         public function about($id) {
-            echo 'This is about '.$id;
+            //echo 'Retrieved id: '.$id;
+            $this->view('pages/about');
         }
     }
