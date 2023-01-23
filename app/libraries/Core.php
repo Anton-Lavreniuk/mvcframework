@@ -24,6 +24,21 @@
             require_once '../app/controllers/' . $this->currentController.'.php';
         //Create an instance of the controller class
             $this->currentController = new $this->currentController;
+        //Check for second part of URL
+            if(isset($url[1])){
+                if(method_exists($this->currentController, $url[1])){
+            //If second part of URL exists, set it as current method
+                $this->currentMethod = ucwords($url[1]);
+//            //Remove the used method
+                unset($url[1]);
+                    //echo 'Method found: ' . $this->currentMethod;
+                }//else echo 'Method '.$this->currentMethod.' not found';
+            }
+            //Get params
+            $this->currentParams = $url ? array_values($url):[];
+
+            //Call a callback function with the params
+            call_user_func_array([$this->currentController, $this->currentMethod],$this->currentParams);
         }
         public  function getUrl() {
             if(isset($_GET['url'])) {
