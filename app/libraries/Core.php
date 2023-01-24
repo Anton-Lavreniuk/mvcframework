@@ -14,11 +14,13 @@
             //print_r($this->getUrl());
             $url = $this->getUrl();
             //Look in controllers for first value
+            if(isset($url[0])){
             if(file_exists('../app/controllers/'.ucwords($url[0]).'.php')){
             //If such controller exists, set it as current controller
                 $this->currentController = ucwords($url[0]);
             //Remove the used controller
                 unset($url[0]);
+            }
             }
         //Require the controller
             require_once '../app/controllers/' . $this->currentController.'.php';
@@ -29,7 +31,7 @@
                 if(method_exists($this->currentController, $url[1])){
             //If second part of URL exists, set it as current method
                 $this->currentMethod = ucwords($url[1]);
-//            //Remove the used method
+            //Remove the used method
                 unset($url[1]);
                     //echo 'Method found: ' . $this->currentMethod;
                 }//else echo 'Method '.$this->currentMethod.' not found';
@@ -46,6 +48,6 @@
                 $url = filter_var($url, FILTER_SANITIZE_URL);
                 $url = explode('/', $url);
                 return $url;
-            }
+            }return null;
             }
     }

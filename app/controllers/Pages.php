@@ -13,7 +13,7 @@
             $this->view('pages/index',$data);
         }
 
-        public function about($id) {
+        public function about() {
             //echo 'Retrieved id: '.$id;
             $this->view('pages/about');
         }
