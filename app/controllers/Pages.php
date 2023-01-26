@@ -7,7 +7,7 @@
 
         public function index() {
             $data=[
-                'title' => 'Welcome!'
+                'title' => 'About us'
             ];
             //Default to the index view
             $this->view('pages/index',$data);
