@@ -8,15 +8,21 @@
         }
 
         public function index() {
+            $posts = $this->postModel->getPosts();
+
             $data=[
-                'title' => 'About us'
+                'title' => 'Welcome',
+                'posts' => $posts
             ];
+
             //Default to the index view
             $this->view('pages/index',$data);
         }
 
         public function about() {
-            //echo 'Retrieved id: '.$id;
-            $this->view('pages/about');
+            $data=[
+                'title' => 'Welcome'
+            ];
+            $this->view('pages/about', $data);
         }
     }
