@@ -1,4 +1,3 @@
-<?php echo SITE_NAME;?>
 <!doctype html>
 <html lang="en">
 <head>

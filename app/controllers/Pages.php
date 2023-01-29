@@ -4,15 +4,13 @@
         private $postModel;
 
         public function __construct(){
-            $this->postModel = $this->model('Post');
+
         }
 
         public function index() {
-            $posts = $this->postModel->getPosts();
 
             $data=[
-                'title' => 'Welcome',
-                'posts' => $posts
+                'title' => 'MVCFramework'
             ];
 
             //Default to the index view
@@ -21,7 +19,7 @@
 
         public function about() {
             $data=[
-                'title' => 'Welcome'
+                'title' => 'About'
             ];
             $this->view('pages/about', $data);
         }
